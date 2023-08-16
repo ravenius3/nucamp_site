@@ -5,14 +5,17 @@ const carousel = new bootstrap.Carousel('#homeCarousel', {
     pause: false
 })
 
-const carouselPause = document.querySelector('#carouselPause');
-carouselPause.addEventListener('click', function() {
-    console.log('Pausing the carousel.');
-    carousel.pause();
-})
+const carouselButton = document.querySelector('#carouselButton');
+const faIcon = document.querySelector('#faButton')
 
-const carouselPlay = document.querySelector('#carouselPlay');
-carouselPlay.addEventListener('click', function() {
-    console.log('Play the carousel');
-    carousel.cycle();
+carouselButton.addEventListener('click', function () {
+    if (faIcon.classList.contains('fa-pause')) {
+        faIcon.classList.remove('fa-pause');
+        faIcon.classList.add('fa-play');
+        carousel.pause();
+    } else {
+        faIcon.classList.remove('fa-play');
+        faIcon.classList.add('fa-pause');
+        carousel.cycle();
+    }
 })
